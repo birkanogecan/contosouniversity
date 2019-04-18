@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package Statistic;
+
+service Statistics {
+  rpc GetStatistics (StatisticsRequest) returns (StatisticsReply) {}
+}
+
+message StatisticsRequest {
+  string name = 1;
+}
+
+message StatisticsReply {
+  string students = 1;
+  string courses = 2;
+  string instructors = 3;
+  string departments = 4;
+}
