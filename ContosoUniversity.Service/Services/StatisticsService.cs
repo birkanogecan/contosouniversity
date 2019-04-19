@@ -28,5 +28,18 @@ namespace ContosoUniversity.Service.Services
                 Students = result.Students.ToString()
             });
         }
+        public override Task<EnrollmentsListReply> GetEnrollments(EnrollmentsRequest request, ServerCallContext context)
+        {
+            var result = _mediator.Send(new EnrollmentsQuery()).Result;
+            EnrollmentsListReply enrollmentsListReply = new EnrollmentsListReply();
+
+            foreach (var item in result)
+            {
+                EnrollmentsReply enrollmentsReply = new EnrollmentsReply { Studentcount = item.StudentCount.ToString(), Enrollmentsdate = item.EnrollmentsDate };
+                enrollmentsListReply.Items.Add(enrollmentsReply);
+            }
+
+            return Task.FromResult(enrollmentsListReply);
+        }
     }
 }

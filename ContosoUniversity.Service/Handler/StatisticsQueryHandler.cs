@@ -10,7 +10,7 @@ using Statistic;
 
 namespace ContosoUniversity.Service.Handler
 {
-    public class StatisticsQueryHandler : IRequestHandler<StatisticsQuery, StatisticsQueryResult>
+    public class StatisticsQueryHandler : IRequestHandler<StatisticsQuery, StatisticsQueryResult>, IRequestHandler<EnrollmentsQuery, List<EnrollmentsQueryResult>>
     {
         private readonly IStatisticsBusiness _statisticsBusiness;
         public StatisticsQueryHandler(IStatisticsBusiness statisticsBusiness)
@@ -20,6 +20,10 @@ namespace ContosoUniversity.Service.Handler
         public Task<StatisticsQueryResult> Handle(StatisticsQuery request, CancellationToken cancellationToken)
         {
             return Task.FromResult(_statisticsBusiness.GetStatistics());
+        }
+        public Task<List<EnrollmentsQueryResult>> Handle(EnrollmentsQuery request, CancellationToken cancellationToken)
+        {
+            return Task.FromResult(_statisticsBusiness.GetEnrollments());
         }
     }
 }

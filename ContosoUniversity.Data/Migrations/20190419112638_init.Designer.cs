@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ContosoUniversity.Data.Migrations
 {
     [DbContext(typeof(SchoolContext))]
-    [Migration("20190418202548_iinit")]
-    partial class iinit
+    [Migration("20190419112638_init")]
+    partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

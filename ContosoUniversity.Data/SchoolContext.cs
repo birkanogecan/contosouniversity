@@ -25,7 +25,7 @@ namespace ContosoUniversity.Data
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(
-                @"Server=BIRKAN-LAPTOP;Database=SchoolDB;Integrated Security=True");
+                @"Server=.;Database=SchoolDB;Trusted_Connection=True");
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

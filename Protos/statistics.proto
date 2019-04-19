@@ -4,7 +4,9 @@ package Statistic;
 
 service Statistics {
   rpc GetStatistics (StatisticsRequest) returns (StatisticsReply) {}
+  rpc GetEnrollments (EnrollmentsRequest) returns (EnrollmentsListReply) {}
 }
+
 
 message StatisticsRequest {
   string name = 1;
@@ -15,4 +17,14 @@ message StatisticsReply {
   string courses = 2;
   string instructors = 3;
   string departments = 4;
+}
+message EnrollmentsRequest {
+  string name = 1;
+}
+message EnrollmentsReply {
+string studentcount = 1;
+string enrollmentsdate = 2;
+}
+message EnrollmentsListReply {
+repeated EnrollmentsReply items = 1;
 }

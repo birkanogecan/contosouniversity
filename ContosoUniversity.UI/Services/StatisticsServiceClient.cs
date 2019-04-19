@@ -9,19 +9,23 @@ namespace ContosoUniversity.UI.Services
 {
     public class StatisticsServiceClient
     {
-        public async Task<StatisticsReply> Get()
+       
+        public StatisticsReply GetStatistics()
         {
-            var channel = new Channel("localhost:" + "50051", ChannelCredentials.Insecure);
+            Channel channel = new Channel("localhost:" + "50051", ChannelCredentials.Insecure);
             var client = new Statistics.StatisticsClient(channel);
-            var reply = await client.GetStatisticsAsync(new StatisticsRequest { Name = "StatisticsClient" });
-            await channel.ShutdownAsync();
-            return await Task.FromResult(reply);
+            var reply = client.GetStatistics(new StatisticsRequest { Name = "StatisticsClient" });
+            
+            return reply;
         }
 
-        //public async Task<List<EnrollmentDateGroupDto>> GetEnrollmentStats()
-        //{
-        //    var url = $"{_baseUrl}/enrollments";
-        //    return await _client.GetJsonAsync<List<EnrollmentDateGroupDto>>(url);
-        //}
+        public EnrollmentsListReply GetEnrollments()
+        {
+            Channel channel = new Channel("localhost:" + "50051", ChannelCredentials.Insecure);
+            var client = new Statistics.StatisticsClient(channel);
+            var reply = client.GetEnrollments(new EnrollmentsRequest { Name = "EnrollmentsClient" });
+            
+            return reply;
+        }
     }
 }

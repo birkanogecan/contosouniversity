@@ -9,5 +9,6 @@ namespace ContosoUniversity.Service.Business.Statistics
     public interface IStatisticsBusiness
     {
         StatisticsQueryResult GetStatistics();
+        List<EnrollmentsQueryResult> GetEnrollments();
     }
 }
